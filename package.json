@@ -1,7 +1,7 @@
 {
   "name": "cors-anywhere",
   "version": "0.4.4",
-  "description": "CORS Anywhere is a reverse proxy which adds CORS headers to the proxied request. Request URL is taken from the path",
+  "description": "Kendraio CORS Anywhere is built on Rob Wu's CORS anywhere. It is a reverse proxy which adds CORS headers to the proxied request.",
   "license": "MIT",
   "author": "Rob Wu <rob@robwu.nl>",
   "repository": {
@@ -19,7 +19,7 @@
     "proxy",
     "heroku"
   ],
-  "main": "./lib/cors-anywhere.js",
+  "main": "server.js",
   "files": [
     "lib/",
     "test/",
