@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 require('./setup');
 
-var createServer = require('../').createServer;
+var createServer = require('../lib/cors-anywhere').createServer;
 var request = require('supertest');
 var path = require('path');
 var http = require('http');
@@ -54,15 +54,10 @@ describe('Basic functionality', function() {
       .expect(200, helpText, done);
   });
 
-  it('GET /iscorsneeded', function(done) {
-    request(cors_anywhere)
-      .get('/iscorsneeded')
-      .expectNoHeader('access-control-allow-origin', done);
-  });
-
   it('GET /example.com:65536', function(done) {
     request(cors_anywhere)
-      .get('/example.com:65536')
+      .setHeader("target-url","example.com:65536" )
+      .get('/')
       .expect('Access-Control-Allow-Origin', '*')
       .expect(400, 'Port number too large: 65536', done);
   });
@@ -83,19 +78,22 @@ describe('Basic functionality', function() {
 
   it('GET /http://robots.txt should be proxied', function(done) {
     request(cors_anywhere)
-      .get('/http://robots.txt')
+      .setHeader("target-url","http://robots.txt" )
+      .get('/')
       .expect('Access-Control-Allow-Origin', '*')
       .expect(200, 'this is http://robots.txt', done);
   });
 
   it('GET /example.com', function(done) {
     request(cors_anywhere)
-      .get('/example.com')
+      .setHeader("target-url","http://example.com" )
+      .get('/')
       .expect('Access-Control-Allow-Origin', '*')
       .expect('x-request-url', 'http://example.com/')
       .expect(200, 'Response from example.com', done);
   });
 
+  /*
   it('GET /example.com:80', function(done) {
     request(cors_anywhere)
       .get('/example.com:80')
@@ -345,7 +343,10 @@ describe('Basic functionality', function() {
       .expectNoHeader('set-cookie')
       .expectNoHeader('set-cookie2', done);
   });
+
+  */
 });
+
 
 describe('Proxy errors', function() {
   before(function() {

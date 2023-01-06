@@ -1,7 +1,7 @@
 # specify the node base image with your desired version node:<version>
 FROM node:16
 # replace this with your application's default port
-EXPOSE 443
+EXPOSE 8080
 
 # Create app directory
 WORKDIR /usr/src/app
