@@ -9,6 +9,10 @@ cookies. Requesting [user credentials](http://www.w3.org/TR/cors/#user-credentia
 
 ## Documentation
 
+### app.kendra.io Cors proxy config
+
+Settings for the Kendraio CORS proxy are managed from the app settings page: https://app.kendra.io/core/settings
+
 ### Allowed destinations
 
 The Kendraio implementation of the proxy is very restricted by default. 
