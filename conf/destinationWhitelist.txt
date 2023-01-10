@@ -1,0 +1,9 @@
+  # Kendraio CORS proxy allowed destinations
+  
+  # One url per line 
+  # Any content after the first space is removed (So make sure there is no space in front of your url)
+
+
+app.kendra.io  # Allow access to ourself? 
+example.com    # Who knows why 
+api.gandi.net  # Domain api 

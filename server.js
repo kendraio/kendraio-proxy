@@ -10,6 +10,16 @@ var port = process.env.PORT || 8080;
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
 var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
 
+// load a whitelist from a text file, and remove everything after the first space, then remove empty rows
+
+var destinationWhitelist = [];
+try {
+  var fs = require('fs');
+  destinationWhitelist=fs.readFileSync('./conf/destinationWhitelist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
+} catch {
+  // file didn't exist
+}
+
 function parseEnvList(env) {
   if (!env) {
     return [];
@@ -24,7 +34,8 @@ var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
-  requireHeader: ['origin', 'target-url'],
+  destinationWhitelist: destinationWhitelist,
+  requireHeader: ['target-url'],
   checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
@@ -47,4 +58,9 @@ cors_proxy.createServer({
   },
 }).listen(port, host, function() {
   console.log('Running Kendraio CORS proxy on ' + host + ':' + port);
+
+  if (destinationWhitelist.length) {
+    console.log('Allowed destinations');
+    console.log(destinationWhitelist);
+  }
 });

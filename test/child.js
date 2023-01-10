@@ -34,7 +34,7 @@ var server;
 if (process.argv.indexOf('use-http-instead-of-cors-anywhere') >= 0) {
   server = require('http').createServer(function(req, res) { res.end(); });
 } else {
-  server = require('../').createServer();
+  server = require('../lib/cors-anywhere').createServer();
 }
 
 server.listen(0, function() {
