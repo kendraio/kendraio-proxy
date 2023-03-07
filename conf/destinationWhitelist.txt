@@ -18,3 +18,4 @@ echoheaders.io # echo test
 covid19.mathdro.id # COVID-19 stats endpoint, maybe down
 covid19-7n89em8jy-mathdroid.vercel.app # dev build of COVID-19 stats endpoint
 raw.githubusercontent.com # Raw file access to public GitHub repos
+api.linear.app # Linear GraphQL API to see tasks
