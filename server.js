@@ -3,19 +3,19 @@ var host = process.env.HOST || '0.0.0.0';
 // Listen on a specific port via the PORT environment variable
 var port = process.env.PORT || 8080;
 
-// Grab the blacklist from the command-line so that we can update the blacklist without deploying
-// again. CORS Anywhere is open by design, and this blacklist is not used, except for countering
+// Grab the denylist from the command-line so that we can update the denylist without deploying
+// again. CORS Anywhere is open by design, and this denylist is not used, except for countering
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
-// use originWhitelist instead.
-var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
-var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+// use originAllowlist instead.
+var originDenylist = parseEnvList(process.env.CORSANYWHERE_DENYLIST);
+var originAllowlist = parseEnvList(process.env.CORSANYWHERE_ALLOWLIST);
 
-// load a whitelist from a text file, and remove everything after the first space, then remove empty rows
+// load a allowlist from a text file, and remove everything after the first space, then remove empty rows
 
-var destinationWhitelist = [];
+var destinationAllowlist = [];
 try {
   var fs = require('fs');
-  destinationWhitelist=fs.readFileSync('./conf/destinationWhitelist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
+  destinationAllowlist=fs.readFileSync('./conf/destinationAllowlist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
 } catch {
   // file didn't exist
 }
@@ -32,9 +32,9 @@ var checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELI
 
 var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
-  originBlacklist: originBlacklist,
-  originWhitelist: originWhitelist,
-  destinationWhitelist: destinationWhitelist,
+  originDenylist: originDenylist,
+  originAllowlist: originAllowlist,
+  destinationAllowlist: destinationAllowlist,
   requireHeader: ['target-url'],
   checkRateLimit: checkRateLimit,
   removeHeaders: [
@@ -59,8 +59,8 @@ cors_proxy.createServer({
 }).listen(port, host, function() {
   console.log('Running Kendraio CORS proxy on ' + host + ':' + port);
 
-  if (destinationWhitelist.length) {
+  if (destinationAllowlist.length) {
     console.log('Allowed destinations');
-    console.log(destinationWhitelist);
+    console.log(destinationAllowlist);
   }
 });
