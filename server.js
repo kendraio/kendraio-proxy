@@ -7,17 +7,33 @@ var port = process.env.PORT || 8080;
 // again. CORS Anywhere is open by design, and this denylist is not used, except for countering
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
 // use originAllowlist instead.
-var originDenylist = parseEnvList(process.env.CORSANYWHERE_DENYLIST);
-var originAllowlist = parseEnvList(process.env.CORSANYWHERE_ALLOWLIST);
+var originDenylist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
+var originAllowlist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+console.log('originDenylist', originDenylist);
+console.log('originAllowlist', originAllowlist);
 
 // load a allowlist from a text file, and remove everything after the first space, then remove empty rows
 
 var destinationAllowlist = [];
 try {
   var fs = require('fs');
+  // Add the following block to load the pathAllowlist from a JSON file
+  var pathAllowlist = {};
+  try {
+    pathAllowlist = JSON.parse(fs.readFileSync('./conf/pathAllowlist.json'));
+  } catch {
+    // file didn't exist or was not valid JSON
+    console.log('No pathAllowlist.json file found in conf folder');
+  }
+  if (pathAllowlist) {
+    console.log('Allowed paths and hosts');
+    console.log(pathAllowlist);
+  }
+
   destinationAllowlist=fs.readFileSync('./conf/destinationAllowlist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
 } catch {
   // file didn't exist
+  console.log('No destinationAllowlist.txt file found in conf folder');
 }
 
 function parseEnvList(env) {
@@ -36,6 +52,7 @@ cors_proxy.createServer({
   originAllowlist: originAllowlist,
   destinationAllowlist: destinationAllowlist,
   requireHeader: ['target-url'],
+  pathAllowlist: pathAllowlist,
   checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
@@ -63,4 +80,5 @@ cors_proxy.createServer({
     console.log('Allowed destinations');
     console.log(destinationAllowlist);
   }
+
 });
