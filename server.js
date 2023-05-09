@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 // Listen on a specific host via the HOST environment variable
 var host = process.env.HOST || '0.0.0.0';
 // Listen on a specific port via the PORT environment variable
@@ -13,27 +15,20 @@ console.log('originDenylist', originDenylist);
 console.log('originAllowlist', originAllowlist);
 
 // load a allowlist from a text file, and remove everything after the first space, then remove empty rows
+var pathAllowlist = {};
+try {
+  pathAllowlist = JSON.parse(fs.readFileSync('./conf/pathAllowlist.json'));
+} catch (error) {
+  console.log('Error reading or parsing pathAllowlist.json file:', error.message);
+}
+console.log('Allowed paths and hosts');
+console.log(pathAllowlist);
 
 var destinationAllowlist = [];
 try {
-  var fs = require('fs');
-  // Add the following block to load the pathAllowlist from a JSON file
-  var pathAllowlist = {};
-  try {
-    pathAllowlist = JSON.parse(fs.readFileSync('./conf/pathAllowlist.json'));
-  } catch {
-    // file didn't exist or was not valid JSON
-    console.log('No pathAllowlist.json file found in conf folder');
-  }
-  if (pathAllowlist) {
-    console.log('Allowed paths and hosts');
-    console.log(pathAllowlist);
-  }
-
   destinationAllowlist=fs.readFileSync('./conf/destinationAllowlist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
-} catch {
-  // file didn't exist
-  console.log('No destinationAllowlist.txt file found in conf folder');
+} catch (error) {
+  console.log('Error reading destinationAllowlist.txt file:', error.message);
 }
 
 function parseEnvList(env) {
