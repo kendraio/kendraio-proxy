@@ -1,21 +1,21 @@
-var fs = require('fs');
+const fs = require('fs');
 
 // Listen on a specific host via the HOST environment variable
-var host = process.env.HOST || '0.0.0.0';
+const host = process.env.HOST || '0.0.0.0';
 // Listen on a specific port via the PORT environment variable
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 // Grab the denylist from the command-line so that we can update the denylist without deploying
 // again. CORS Anywhere is open by design, and this denylist is not used, except for countering
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
 // use originAllowlist instead.
-var originDenylist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
-var originAllowlist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+const originDenylist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
+const originAllowlist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
 console.log('originDenylist', originDenylist);
 console.log('originAllowlist', originAllowlist);
 
 // load a allowlist from a text file, and remove everything after the first space, then remove empty rows
-var pathAllowlist = {};
+let pathAllowlist = {};
 try {
   pathAllowlist = JSON.parse(fs.readFileSync('./conf/pathAllowlist.json'));
 } catch (error) {
@@ -24,7 +24,7 @@ try {
 console.log('Allowed paths and hosts');
 console.log(pathAllowlist);
 
-var destinationAllowlist = [];
+let destinationAllowlist = [];
 try {
   destinationAllowlist=fs.readFileSync('./conf/destinationAllowlist.txt').toString().split("\n").map( row => row.split(" ")[0]).filter(n=>n);
 } catch (error) {
@@ -39,9 +39,9 @@ function parseEnvList(env) {
 }
 
 // Set up rate-limiting to avoid abuse of the public CORS Anywhere server.
-var checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELIMIT);
+const checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELIMIT);
 
-var cors_proxy = require('./lib/cors-anywhere');
+const cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originDenylist: originDenylist,
   originAllowlist: originAllowlist,
