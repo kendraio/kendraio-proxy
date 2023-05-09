@@ -1,0 +1,9 @@
+{
+    "example.com": [
+        "/allowed-path",
+        "/another-allowed-path"
+    ],
+    "www.mygreenpod.com": [
+        "/wp-json/wc/v3/products"
+    ]
+}
