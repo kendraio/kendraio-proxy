@@ -21,3 +21,4 @@ raw.githubusercontent.com # Raw file access to public GitHub repos
 api.linear.app # Linear GraphQL API to see tasks
 casoris.si # Kendraio Subscribe experiment with Wordpress site article listing
 api-inference.huggingface.co # ML model API
+disease.sh # New Covid-19 data source
