@@ -4,8 +4,8 @@
   # Any content after the first space is removed (So make sure there is no space in front of your url)
 
 
-app.kendra.io  # Allow access to ourself? 
-example.com    # Who knows why 
+app.kendra.io  # For testing
+example.com    # For testing 
 api.gandi.net  # Domain api 
 reqres.in # mock test API
 api-sandbox.uphold.com  # Uphold sandbox
@@ -23,3 +23,4 @@ api.linear.app # Linear GraphQL API to see tasks
 casoris.si # Kendraio Subscribe experiment with Wordpress site article listing
 api-inference.huggingface.co # ML model API
 disease.sh # New Covid-19 data source
+www.googleapis.com # For YouTube and Google Drive etc
