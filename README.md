@@ -1,6 +1,6 @@
-**Kendraio CORS Proxy**
+**Kendraio Proxy**
 
-The Kendraio CORS proxy is a fork of **CORS Anywhere**, a NodeJS proxy which adds CORS headers to the proxied request.
+Kendraio Proxy is a fork of **CORS Anywhere**, a NodeJS proxy which adds CORS headers to the proxied request.
 
 The url to proxy is taken from the "target-url" header. 
 
@@ -9,15 +9,15 @@ cookies. Requesting [user credentials](http://www.w3.org/TR/cors/#user-credentia
 
 ## Documentation
 
-### app.kendra.io Cors proxy config
+### Kendraio App proxy default
 
-Settings for the Kendraio CORS proxy are managed from the app settings page: https://app.kendra.io/core/settings
+Proxy settings for Kendraio App are managed from the app settings page: https://app.kendra.io/core/settings
 
 ### Allowed destinations
 
 The Kendraio implementation of the proxy is very restricted by default. 
 Only specified URLs are available for access. In order to use the proxy
-with a new url, the url must be added to the destination whitelist. 
+with a new URL, the URL must be added to the destination whitelist. 
 
 The list of allowed destinations is managed in [./conf/destinationWhitelist.txt]. 
 One URL per line, with any content after the first space removed. This allows for
@@ -46,7 +46,7 @@ Tests are run using the following command.
   npm test
 ```
 
-Most of the original CORS anywhere tests have been removed. The tests in this repo only cover functionality specific to app.kendra.io. 
+Most of the original CORS Anywhere tests have been removed. The tests in this repo only cover functionality specific to app.kendra.io. 
 
 
 
