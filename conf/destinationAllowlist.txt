@@ -2,6 +2,7 @@
   
   # One url per line 
   # Any content after the first space is removed (So make sure there is no space in front of your url)
+  # URL must be without http or https as it will be added automatically
 
 
 app.kendra.io  # For testing
@@ -25,4 +26,4 @@ api-inference.huggingface.co # ML model API
 disease.sh # New Covid-19 data source
 www.googleapis.com # For YouTube and Google Drive etc
 kendraio-dev-shop.myshopify.com # Shopify Store for testing purpose
-https://api.baserow.io/api # baserow db API
+api.baserow.io/api # baserow db API
