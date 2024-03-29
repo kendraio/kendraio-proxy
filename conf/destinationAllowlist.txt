@@ -1,6 +1,6 @@
   # Kendraio CORS proxy allowed destinations
   
-  # One url per line 
+  # One hostname per line, NOT a URL path 
   # Any content after the first space is removed (So make sure there is no space in front of your url)
   # The rule checker expects a valid hostname only, not a full path - it must not specify http or https protocol.
 
