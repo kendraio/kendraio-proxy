@@ -1,7 +1,8 @@
   # Kendraio CORS proxy allowed destinations
   
-  # One url per line 
+  # One hostname per line, NOT a URL path 
   # Any content after the first space is removed (So make sure there is no space in front of your url)
+  # The rule checker expects a valid hostname only, not a full path - it must not specify http or https protocol.
 
 
 app.kendra.io  # For testing
@@ -25,4 +26,4 @@ api-inference.huggingface.co # ML model API
 disease.sh # New Covid-19 data source
 www.googleapis.com # For YouTube and Google Drive etc
 kendraio-dev-shop.myshopify.com # Shopify Store for testing purpose
-https://api.baserow.io/api # baserow db API
+api.baserow.io # Baserow database API
