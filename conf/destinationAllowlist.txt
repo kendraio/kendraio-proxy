@@ -1,9 +1,14 @@
-  # Kendraio CORS proxy allowed destinations
+# Kendraio CORS proxy allowed destinations
   
-  # One hostname per line, NOT a URL path 
-  # Any content after the first space is removed (So make sure there is no space in front of your url)
-  # The rule checker expects a valid hostname only, not a full path - it must not specify http or https protocol.
+# One hostname per line, NOT a URL path 
+# Any content after the first space is removed (So make sure there is no space in front of your url)
+# The rule checker expects a valid hostname only, not a full path - it must not specify http or https protocol.
 
+# How destinationAllowlist works:
+# The destinationAllowlist is then used in lib/cors-anywhere.js to check if the requested hostname is allowed: It checks if the location.hostname extracted from the incoming request's URL is present in the destinationAllowlist
+# It then checks if the hostname is a valid top-level domain, IPv4, or IPv6 address.
+# Therefore, destinationAllowlist must only use hostnames. No protocols or paths are allowed
+# For allowing access to specific paths, see pathAllowlist.json
 
 app.kendra.io  # For testing
 example.com    # For testing 
