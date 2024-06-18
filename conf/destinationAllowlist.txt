@@ -31,5 +31,5 @@ api-inference.huggingface.co # ML model API
 disease.sh # New Covid-19 data source
 www.googleapis.com # For YouTube and Google Drive etc
 kendraio-dev-shop.myshopify.com # Shopify Store for testing purpose
-leadintoclean.com # Shopify API
+leanintoclean.com # Shopify API
 api.baserow.io # Baserow database API
