@@ -34,3 +34,4 @@ kendraio-dev-shop.myshopify.com # Shopify Store for testing purpose
 leanintoclean.com # Shopify API
 api.baserow.io # Baserow database API
 freecords.bubbleapps.io # Freecords API
+meeting-bobcat.hasura.app # Hasura GraphQL / REST API for meeting transcripts
