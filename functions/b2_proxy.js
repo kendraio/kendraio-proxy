@@ -84,8 +84,11 @@ export default {
       console.log('Download authorisation successful');
   
       const signedUrlData = await downloadAuthorisation.json();
-      const downloadUrl = `${authData.downloadUrl}/file/${B2_BUCKET_NAME}/${fileName}?Authorization=${signedUrlData.authorizationToken}`;
-  
+      
+      const b2DownloadEndpoint = authData.downloadUrl;
+      const downloadAuthToken = signedUrlData.authorizationToken;
+      const downloadUrl = `${b2DownloadEndpoint}/file/${B2_BUCKET_NAME}/${fileName}?Authorization=${downloadAuthToken}`;
+
       // Step 3: Fetch the content from signed URL
       console.log(`Fetching content from signed URL for: ${fileName}`);
       const fileResponse = await fetch(downloadUrl);
