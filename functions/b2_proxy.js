@@ -1,8 +1,8 @@
 /**
- * Cloudflare Workers script to proxy requests to Backblaze B2 with 
- * CORS headers and key from environment variables, to sign URLs
- *
- * Learn more at https://developers.cloudflare.com/workers/
+ * Worker script to proxy requests to Backblaze B2 with  CORS 
+ * headers and key from environment variables, to sign URLs.
+ * Compatible with Cloudflare Workers.
+ * See https://developers.cloudflare.com/workers/
  */
 
 export default {
@@ -20,9 +20,9 @@ export default {
   
       const url = new URL(request.url);
       
-      // Return hello world if no path specified
+      // Return response if no path is specified
       if (url.pathname === "/" || !url.pathname) {
-        return new Response("Hello World!", {
+        return new Response("The proxy server is active. This is the root path. Note: To access a file resource, append the filename to the path.", {
           headers: { 
             "content-type": "text/plain",
             ...corsHeaders
