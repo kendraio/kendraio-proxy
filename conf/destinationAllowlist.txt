@@ -39,3 +39,4 @@ meeting-bobcat.hasura.app # Hasura GraphQL / REST API for meeting transcripts
 s3.eu-central-003.backblazeb2.com # Backblaze S3-Compatible API
 api.backblazeb2.com # Backblaze Native API
 freecords.s3.eu-central-003.backblazeb2.com # Backblaze Freecords bucket
+bucket.s3.eu-central-003.backblazeb2.com # Backblaze S3-Compatible API
