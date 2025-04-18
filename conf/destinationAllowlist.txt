@@ -41,3 +41,4 @@ api.backblazeb2.com # Backblaze Native API
 freecords.s3.eu-central-003.backblazeb2.com # Backblaze Freecords bucket
 bucket.s3.eu-central-003.backblazeb2.com # Backblaze S3-Compatible API
 test-library.murmurations.network # Murmurations Network
+schemas.murmurations.network # Murmurations Network
