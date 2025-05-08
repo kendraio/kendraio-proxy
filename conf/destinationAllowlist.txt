@@ -10,13 +10,13 @@
 # Therefore, destinationAllowlist must only use hostnames. No protocols or paths are allowed
 # For allowing access to specific paths, see pathAllowlist.json
 
-app.kendra.io  # For testing
-example.com    # For testing 
-api.gandi.net  # Domain api 
+app.kendra.io # For testing
+example.com # For testing 
+api.gandi.net # Domain api 
 reqres.in # mock test API
-api-sandbox.uphold.com  # Uphold sandbox
-api.uphold.com  # Uphold production
-id.resonate.ninja  # Auth server for resonate
+api-sandbox.uphold.com # Uphold sandbox
+api.uphold.com # Uphold production
+id.resonate.ninja # Auth server for resonate
 api.harvestapp.com # harvestapp
 drive.google.com # Google drive
 api.dynadot.com # Dynadot API
@@ -43,3 +43,4 @@ bucket.s3.eu-central-003.backblazeb2.com # Backblaze S3-Compatible API
 test-library.murmurations.network # Murmurations Network
 test-index.murmurations.network # Murmurations Network
 schemas.murmurations.network # Murmurations Network
+streaming-production-spaces.ams3.cdn.digitaloceanspaces.com #Freecords media
