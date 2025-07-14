@@ -47,3 +47,4 @@ streaming-production-spaces.ams3.cdn.digitaloceanspaces.com # Freecords images
 b47b35d34aab6a7739bb17ca1be8cddd.cdn.bubble.io # Freecords images
 boonbooks.com # Boon Books API
 boonbooks.myshopify.com # Boon Books API
+app.freecords.com # Freecords API
