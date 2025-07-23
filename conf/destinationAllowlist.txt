@@ -45,6 +45,5 @@ test-index.murmurations.network # Murmurations Network
 schemas.murmurations.network # Murmurations Network
 streaming-production-spaces.ams3.cdn.digitaloceanspaces.com # Freecords images
 b47b35d34aab6a7739bb17ca1be8cddd.cdn.bubble.io # Freecords images
-boonbooks.com # Boon Books API
-boonbooks.myshopify.com # Boon Books API
+9597d8-c1.myshopify.com # Boon Books API
 app.freecords.com # Freecords API
