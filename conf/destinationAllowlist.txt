@@ -48,3 +48,4 @@ b47b35d34aab6a7739bb17ca1be8cddd.cdn.bubble.io # Freecords images
 9597d8-c1.myshopify.com # Boon Books API
 app.freecords.com # Freecords API
 streaming-production-spaces.ams3.digitaloceanspaces.com # Freecords API
+my.freecords.com # Freecords API
