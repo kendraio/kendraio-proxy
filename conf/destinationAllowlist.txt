@@ -51,3 +51,4 @@ app.freecords.com # Freecords API
 streaming-production-spaces.ams3.digitaloceanspaces.com # Freecords API
 my.freecords.com # Freecords API
 convert-to-wav-392698016617.us-central1.run.app # Freecords audio file converter
+freecords-ddex.s3.eu-central-003.backblazeb2.com # Freecords own
