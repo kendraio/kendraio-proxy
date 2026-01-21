@@ -7,6 +7,8 @@ The url to proxy is taken from the "target-url" header.
 The proxy does not put any restrictions on the http methods or headers, except for
 cookies. Requesting [user credentials](http://www.w3.org/TR/cors/#user-credentials) is disallowed.
 
+## There is also a seperate function directory for small, single file isolated scripts.
+
 ## Documentation
 
 ### Kendraio App proxy default
