@@ -42,11 +42,13 @@ function parseEnvList(env) {
 const checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELIMIT);
 
 const cors_proxy = require('./lib/cors-anywhere');
+const urlQueryProxy = require('./lib/url-query-proxy');
 cors_proxy.createServer({
   originDenylist: originDenylist,
   originAllowlist: originAllowlist,
   destinationAllowlist: destinationAllowlist,
   requireHeader: ['target-url'],
+  handleInitialRequest: urlQueryProxy,
   pathAllowlist: pathAllowlist,
   checkRateLimit: checkRateLimit,
   removeHeaders: [
