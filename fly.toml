@@ -6,7 +6,7 @@ kill_timeout = 5
 processes = []
 
 [env]
-CORSANYWHERE_WHITELIST = "https://app.kendra.io,https://kendraio.github.io"
+CORSANYWHERE_WHITELIST = "https://app.kendra.io,https://dev.app.kendra.io,https://kendraio.github.io"
 
 [experimental]
   allowed_public_ports = []
